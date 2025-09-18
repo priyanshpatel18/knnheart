@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score, precision_score, recall_score, classification_report
+from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 def run_v1():
     df = pd.read_csv("data/heart_v4.csv", header=None)
@@ -30,8 +30,13 @@ def run_v1():
     knn.fit(X_train, y_train)
     y_pred = knn.predict(X_test)
 
+    # Create table-like output
+    metrics = {
+        "Accuracy": accuracy_score(y_test, y_pred),
+        "Precision": precision_score(y_test, y_pred),
+        "Recall": recall_score(y_test, y_pred),
+    }
+    results_df = pd.DataFrame(metrics.items(), columns=["Metric", "Score"])
+
     print("\n=== V1: Full Dataset Evaluation ===")
-    print("Accuracy:", accuracy_score(y_test, y_pred))
-    print("Precision:", precision_score(y_test, y_pred))
-    print("Recall:", recall_score(y_test, y_pred))
-    print("\nClassification Report:\n", classification_report(y_test, y_pred))
+    print(results_df.to_string(index=False, float_format="%.4f"))
