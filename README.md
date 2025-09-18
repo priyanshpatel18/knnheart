@@ -3,6 +3,9 @@
 This project applies **K-Nearest Neighbors (KNN)** to heart disease datasets from the UCI repository.  
 It includes data inspection, preprocessing, model training, hyperparameter tuning, and evaluation.
 
+## Datasets
+[Heart Disease Datasets](https://archive-beta.ics.uci.edu/dataset/45/heart+disease)
+
 ## Files
 - `step2_inspect_v4.py` — Inspect raw Cleveland dataset  
 - `step3_clean.py` — Clean and preprocess data  
